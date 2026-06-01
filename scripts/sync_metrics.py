@@ -15,6 +15,10 @@ except ImportError as e:
 SHEET_ID = "1ggeuKuCFZsUpDfRl2wPLOqWD2in7uL9Y3yHTaui_A0w"
 SHEET_NAMES = ["base de datos", "Expedientes", "Rendición VEP_SCIT", "Capital financiero"]
 OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "src", "data", "metrics.json")
+SCOPES = [
+    "https://www.googleapis.com/auth/spreadsheets.readonly",
+    "https://www.googleapis.com/auth/drive.readonly",
+]
 
 
 def load_credentials():
@@ -22,14 +26,14 @@ def load_credentials():
     if env_json:
         try:
             creds_dict = json.loads(env_json)
-            return service_account.Credentials.from_service_account_info(creds_dict)
+            return service_account.Credentials.from_service_account_info(creds_dict, scopes=SCOPES)
         except (json.JSONDecodeError, GoogleAuthError, ValueError) as e:
             print(f"[WARN] Failed to parse GOOGLE_CREDENTIALS env var: {e}")
 
     local_path = os.path.join(os.path.dirname(__file__), "..", "credentials.json")
     if os.path.exists(local_path):
         try:
-            return service_account.Credentials.from_service_account_file(local_path)
+            return service_account.Credentials.from_service_account_file(local_path, scopes=SCOPES)
         except GoogleAuthError as e:
             print(f"[WARN] Failed to load local credentials.json: {e}")
 
