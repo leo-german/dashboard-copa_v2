@@ -64,7 +64,7 @@ def clean_base_datos(rows):
         return []
     for col in df.columns:
         if "fecha" in col.lower() or "date" in col.lower():
-            df[col] = pd.to_datetime(df[col], errors="coerce")
+            df[col] = pd.to_datetime(df[col], errors="coerce", dayfirst=True)
         if any(kw in col.lower() for kw in ["monto", "importe", "total", "monto $"]):
             df[col] = pd.to_numeric(df[col], errors="coerce").fillna(0)
     return df.to_dict(orient="records")
@@ -76,7 +76,7 @@ def clean_expedientes(rows):
         return []
     for col in df.columns:
         if "fecha" in col.lower() or "date" in col.lower():
-            df[col] = pd.to_datetime(df[col], errors="coerce")
+            df[col] = pd.to_datetime(df[col], errors="coerce", dayfirst=True)
     return df.to_dict(orient="records")
 
 
@@ -86,7 +86,7 @@ def clean_rendicion_vep_scit(rows):
         return []
     for col in df.columns:
         if "fecha" in col.lower() or "date" in col.lower():
-            df[col] = pd.to_datetime(df[col], errors="coerce")
+            df[col] = pd.to_datetime(df[col], errors="coerce", dayfirst=True)
         if any(kw in col.lower() for kw in ["monto", "importe", "total", "ingreso", "egreso"]):
             df[col] = pd.to_numeric(df[col], errors="coerce").fillna(0)
     return df.to_dict(orient="records")
@@ -98,7 +98,7 @@ def clean_capital_financiero(rows):
         return []
     for col in df.columns:
         if "fecha" in col.lower() or "date" in col.lower():
-            df[col] = pd.to_datetime(df[col], errors="coerce")
+            df[col] = pd.to_datetime(df[col], errors="coerce", dayfirst=True)
         if any(kw in col.lower() for kw in ["monto", "importe", "total", "valor"]):
             df[col] = pd.to_numeric(df[col], errors="coerce").fillna(0)
     return df.to_dict(orient="records")
@@ -107,9 +107,9 @@ def clean_capital_financiero(rows):
 def serialize(obj):
     if isinstance(obj, pd.Timestamp):
         return obj.isoformat()
-    if isinstance(obj, pd.Timestamp):
-        return str(obj)
-    return obj
+    if isinstance(obj, type(pd.NaT)):
+        return None
+    return str(obj)
 
 
 def main():
