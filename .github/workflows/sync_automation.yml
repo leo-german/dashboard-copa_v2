@@ -2,12 +2,15 @@ name: Sync Google Sheets Metrics
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 * * * *' # Corre automáticamente cada 1 hora
   push:
-    branches: [main]
+    branches: [main] # Corre automáticamente cada vez que subís un cambio
+  workflow_dispatch: # 👈 ¡ESTO ACTIVA EL BOTÓN "RUN WORKFLOW" EN LA WEB!
 
 permissions:
-  contents: write
+  contents: write  # Permiso para guardar el JSON en tu repositorio
+  pages: write     # 👈 Permiso para crear la web en GitHub Pages
+  id-token: write  # 👈 Permiso de seguridad requerido por GitHub Pages
 
 jobs:
   sync:
@@ -26,6 +29,7 @@ jobs:
 
       - name: Run sync script
         env:
+          # NOTA: Asegurate de que tu script 'sync_metrics.py' busque esta variable exacta: os.environ.get("GOOGLE_CREDENTIALS")
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
         run: python scripts/sync_metrics.py
 
@@ -39,3 +43,17 @@ jobs:
             git pull --rebase --autostash
             git push
           }
+
+      # ========= A PARTIR DE AQUÍ SE GENERA TU WEB PÚBLICA =========
+      
+      - name: Inicializar entorno de despliegue para GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: Empaquetar SOLAMENTE la carpeta SRC (Raíz de la web)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'src/' # Publica solo lo que está dentro de src/ (haciendo que index.html sea la raíz)
+
+      - name: Publicar el Dashboard en internet
+        id: deployment
+        uses: actions/deploy-pages@v4
