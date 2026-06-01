@@ -1,0 +1,170 @@
+{
+  "base_de_datos": [
+    {
+      "fecha": "2025-01-15",
+      "descripcion": "Ingreso matrícula enero",
+      "categoria": "Ingreso",
+      "tipo": "Ordinario",
+      "monto": 1250000
+    },
+    {
+      "fecha": "2025-01-20",
+      "descripcion": "Ingreso arancel curso",
+      "categoria": "Ingreso",
+      "tipo": "Extraordinario",
+      "monto": 350000
+    },
+    {
+      "fecha": "2025-01-25",
+      "descripcion": "Pago servicios",
+      "categoria": "Egreso",
+      "tipo": "Operativo",
+      "monto": 180000
+    },
+    {
+      "fecha": "2025-02-10",
+      "descripcion": "Ingreso matrícula febrero",
+      "categoria": "Ingreso",
+      "tipo": "Ordinario",
+      "monto": 1180000
+    },
+    {
+      "fecha": "2025-02-15",
+      "descripcion": "Mantenimiento edilicio",
+      "categoria": "Egreso",
+      "tipo": "Operativo",
+      "monto": 420000
+    },
+    {
+      "fecha": "2025-02-20",
+      "descripcion": "Ingreso publicaciones",
+      "categoria": "Ingreso",
+      "tipo": "Extraordinario",
+      "monto": 180000
+    },
+    {
+      "fecha": "2025-03-05",
+      "descripcion": "Ingreso matrícula marzo",
+      "categoria": "Ingreso",
+      "tipo": "Ordinario",
+      "monto": 1320000
+    },
+    {
+      "fecha": "2025-03-10",
+      "descripcion": "Pago honorarios",
+      "categoria": "Egreso",
+      "tipo": "Operativo",
+      "monto": 650000
+    },
+    {
+      "fecha": "2025-03-15",
+      "descripcion": "Evento institucional",
+      "categoria": "Egreso",
+      "tipo": "Extraordinario",
+      "monto": 280000
+    },
+    {
+      "fecha": "2025-03-20",
+      "descripcion": "Ingreso certificaciones",
+      "categoria": "Ingreso",
+      "tipo": "Extraordinario",
+      "monto": 220000
+    }
+  ],
+  "expedientes": [
+    {
+      "fecha": "2025-01-08",
+      "tipo": "Mensura",
+      "estado": "Finalizado",
+      "profesional": "Martín López"
+    },
+    {
+      "fecha": "2025-01-15",
+      "tipo": "Subdivisión",
+      "estado": "En trámite",
+      "profesional": "Ana García"
+    },
+    {
+      "fecha": "2025-02-03",
+      "tipo": "Mensura",
+      "estado": "En trámite",
+      "profesional": "Carlos Ruiz"
+    },
+    {
+      "fecha": "2025-02-18",
+      "tipo": "Medianería",
+      "estado": "Finalizado",
+      "profesional": "Laura Martínez"
+    },
+    {
+      "fecha": "2025-03-01",
+      "tipo": "Mensura",
+      "estado": "Pendiente",
+      "profesional": "Pedro Sánchez"
+    },
+    {
+      "fecha": "2025-03-12",
+      "tipo": "Subdivisión",
+      "estado": "Finalizado",
+      "profesional": "Martín López"
+    },
+    {
+      "fecha": "2025-03-20",
+      "tipo": "Mensura",
+      "estado": "En trámite",
+      "profesional": "Ana García"
+    }
+  ],
+  "rendicion_vep_scit": [
+    {
+      "fecha": "2025-01-10",
+      "ingreso_vep": 450000,
+      "egreso_vep": 120000,
+      "ingreso_scit": 280000,
+      "egreso_scit": 90000,
+      "periodo": "Enero 2025"
+    },
+    {
+      "fecha": "2025-02-10",
+      "ingreso_vep": 510000,
+      "egreso_vep": 135000,
+      "ingreso_scit": 310000,
+      "egreso_scit": 98000,
+      "periodo": "Febrero 2025"
+    },
+    {
+      "fecha": "2025-03-10",
+      "ingreso_vep": 480000,
+      "egreso_vep": 140000,
+      "ingreso_scit": 295000,
+      "egreso_scit": 102000,
+      "periodo": "Marzo 2025"
+    }
+  ],
+  "capital_financiero": [
+    {
+      "fecha": "2025-01-01",
+      "liquidez": 8500000,
+      "fci": 3500000,
+      "plazo_fijo": 5000000,
+      "intereses_devengados": 185000,
+      "cotizacion_usd": 1200
+    },
+    {
+      "fecha": "2025-02-01",
+      "liquidez": 7200000,
+      "fci": 4100000,
+      "plazo_fijo": 5500000,
+      "intereses_devengados": 210000,
+      "cotizacion_usd": 1250
+    },
+    {
+      "fecha": "2025-03-01",
+      "liquidez": 6800000,
+      "fci": 4800000,
+      "plazo_fijo": 6000000,
+      "intereses_devengados": 245000,
+      "cotizacion_usd": 1300
+    }
+  ]
+}

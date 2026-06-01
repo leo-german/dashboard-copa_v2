@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard CoPA - Colegio de Profesionales de la Agrimensura</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-inner">
+      <div class="navbar-brand">
+        <img src="assets/logo.png" alt="CoPA Logo" class="logo">
+        <div>
+          <h1 class="brand-title">Colegio de Profesionales de la Agrimensura</h1>
+          <span class="brand-subtitle">Provincia de Santa Fe &mdash; Distrito Norte</span>
+        </div>
+      </div>
+      <span class="badge-dashboard">Dashboard de Métricas</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="filters-bar">
+      <div class="filter-group">
+        <label for="filterPeriodo">Período General</label>
+        <select id="filterPeriodo"></select>
+      </div>
+      <div class="filter-group">
+        <label for="filterAnio">Año</label>
+        <select id="filterAnio"></select>
+      </div>
+    </section>
+
+    <section class="kpi-grid" id="kpiGrid">
+      <div class="kpi-card" id="kpiIngresos">
+        <div class="kpi-label">Ingresos Totales</div>
+        <div class="kpi-value" id="kpiIngresosValor">$ --</div>
+        <div class="kpi-delta" id="kpiIngresosDelta"><span class="delta-icon"></span> --</div>
+      </div>
+      <div class="kpi-card" id="kpiEgresos">
+        <div class="kpi-label">Egresos Totales</div>
+        <div class="kpi-value" id="kpiEgresosValor">$ --</div>
+        <div class="kpi-delta" id="kpiEgresosDelta"><span class="delta-icon"></span> --</div>
+      </div>
+      <div class="kpi-card" id="kpiEgresosOp">
+        <div class="kpi-label">Egresos Operativos</div>
+        <div class="kpi-value" id="kpiEgresosOpValor">$ --</div>
+        <div class="kpi-delta" id="kpiEgresosOpDelta"><span class="delta-icon"></span> --</div>
+      </div>
+      <div class="kpi-card" id="kpiEgresosExt">
+        <div class="kpi-label">Egresos Extraordinarios</div>
+        <div class="kpi-value" id="kpiEgresosExtValor">$ --</div>
+        <div class="kpi-delta" id="kpiEgresosExtDelta"><span class="delta-icon"></span> --</div>
+      </div>
+    </section>
+
+    <section class="chart-grid">
+      <div class="chart-card chart-card-full">
+        <h2 class="chart-title">Ingresos vs Egresos</h2>
+        <canvas id="chartIngresosEgresos"></canvas>
+      </div>
+      <div class="chart-card">
+        <h2 class="chart-title">Expedientes por Tipo</h2>
+        <canvas id="chartExpedientes"></canvas>
+      </div>
+      <div class="chart-card">
+        <h2 class="chart-title">Estado de Expedientes</h2>
+        <canvas id="chartExpedientesEstado"></canvas>
+      </div>
+      <div class="chart-card chart-card-full">
+        <h2 class="chart-title">Rendición VEP / SCIT</h2>
+        <div class="chart-legend-note">Ingresos (verde) · Egresos (rojo)</div>
+        <canvas id="chartVepScit"></canvas>
+      </div>
+      <div class="chart-card chart-card-full">
+        <div class="chart-header-flex">
+          <h2 class="chart-title">Desglose por Categorías</h2>
+          <div class="chart-toggle-group">
+            <button class="toggle-btn active" data-cat="Ingresos">Ingresos</button>
+            <button class="toggle-btn" data-cat="Egresos">Egresos</button>
+          </div>
+        </div>
+        <canvas id="chartCategorias"></canvas>
+      </div>
+    </section>
+
+    <section class="section-divider">
+      <h2 class="section-title">Capital Financiero de la Entidad</h2>
+    </section>
+
+    <section class="filters-bar filters-bar--capital">
+      <div class="filter-group">
+        <label for="filterCapitalPeriodo">Período Capital</label>
+        <select id="filterCapitalPeriodo"></select>
+      </div>
+      <div class="filter-group">
+        <label for="filterCapitalAnio">Año</label>
+        <select id="filterCapitalAnio"></select>
+      </div>
+      <div class="filter-group">
+        <label>Moneda</label>
+        <div class="currency-toggle">
+          <button class="toggle-btn active" data-currency="ARS">ARS $</button>
+          <button class="toggle-btn" data-currency="USD">USD $</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="chart-grid">
+      <div class="chart-card">
+        <h2 class="chart-title">Distribución del Capital</h2>
+        <canvas id="chartCapitalDist"></canvas>
+      </div>
+      <div class="chart-card">
+        <h2 class="chart-title">Crecimiento vs Intereses</h2>
+        <canvas id="chartCapitalCrecimiento"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>CoPA &mdash; Colegio de Profesionales de la Agrimensura de la Provincia de Santa Fe &mdash; Distrito Norte</p>
+    <p class="footer-small">Datos actualizados automáticamente desde Google Sheets</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
